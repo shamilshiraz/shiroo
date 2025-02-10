@@ -55,7 +55,7 @@ const Navbar = () => {
   return (
     <>
       <nav className="top-0 left-0 w-full z-40 fixed">
-        <div className=" mx-10 px-4 sm:px-6 ">
+        <div className=" px-4 sm:px-6 ">
           <div className="flex items-center justify-between h-32">
             {/* Japanese Logo */}
             <div className="text-5xl text-white">
