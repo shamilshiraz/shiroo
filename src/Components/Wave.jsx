@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';  // Correct icon import from lucide-react
 import Navbar from './Nav';
 
 export default function WaveEffectDemo() {
@@ -20,13 +20,14 @@ export default function WaveEffectDemo() {
     updateDimensions();
     window.addEventListener('resize', updateDimensions);
 
+    // Scene setup
     const scene = new THREE.Scene();
     const simScene = new THREE.Scene();
     const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
     const mouse = new THREE.Vector2();
     let frame = 0;
 
-    // Load the image as texture (pool2.jpg)
+    // Load the image as texture (sand.jpg)
     const textureLoader = new THREE.TextureLoader();
     const backgroundTexture = textureLoader.load('/sand.jpg');
     backgroundTexture.minFilter = THREE.LinearFilter;
@@ -57,53 +58,40 @@ export default function WaveEffectDemo() {
         uniform float time;
         uniform int frame;
         varying vec2 vUv;
-    
         const float delta = 1.4;
-    
         void main() {
           vec2 uv = vUv;
           if(frame == 0) {
             gl_FragColor = vec4(0.0);
             return;
           }
-    
           vec4 data = texture2D(textureA, uv);
           float pressure = data.x;
           float pVel = data.y;
-    
           vec2 texelSize = 2.0 / resolution;
           float p_right = texture2D(textureA, uv + vec2(texelSize.x, 0.0)).x;
           float p_left = texture2D(textureA, uv + vec2(-texelSize.x, 0.0)).x;
           float p_up = texture2D(textureA, uv + vec2(0.0, texelSize.y)).x;
           float p_down = texture2D(textureA, uv + vec2(0.0, -texelSize.y)).x;
-    
           pVel += delta * (-2.0 * pressure + p_right + p_left) / 4.0;
           pVel += delta * (-2.0 * pressure + p_up + p_down) / 4.0;
-    
           pressure += delta * pVel;
           pVel *= 0.99;
           pressure *= 0.99;
-    
+
           // Fluid ripple effect near the mouse
           vec2 mouseUV = mouse / resolution;
           if(mouse.x > 0.0) {
-            // Fluid wave effect (adjusted to be smaller)
-            float waveSize = 0.001;  // Decreased size for a smaller ripple
-            float dist = length(uv - mouseUV);  // Get the distance from the mouse position
-            
-            // Smooth out the edges to create a more fluid effect
-            float wave = smoothstep(waveSize, waveSize + 0.02, dist);  // Smooth transition
-            
-            // Apply the pressure increase in a fluid way
-            pressure += 18.0 * (1.0 - wave);  // Use the inverse wave to concentrate the effect
+            float waveSize = 0.001;
+            float dist = length(uv - mouseUV);
+            float wave = smoothstep(waveSize, waveSize + 0.02, dist);
+            pressure += 18.0 * (1.0 - wave);
           }
-    
+
           gl_FragColor = vec4(pressure, pVel, (p_right - p_left) / 2.0, (p_up - p_down) / 2.0);
         }
       `
     });
-    
-    
 
     // Glass-like render material with background distortion
     const renderMaterial = new THREE.ShaderMaterial({
@@ -122,26 +110,20 @@ export default function WaveEffectDemo() {
         uniform sampler2D textureA;
         uniform sampler2D textureB;
         varying vec2 vUv;
-    
         void main() {
           vec4 data = texture2D(textureA, vUv);
-          vec2 distortion = 0.2 * data.zw; // Using the wave data to distort the texture
-    
+          vec2 distortion = 0.2 * data.zw;
           vec4 color = texture2D(textureB, vUv + distortion);
-          color.rgb = mix(color.rgb, vec3(1.0), 0.1); // Increase the color saturation
-    
-          color.a = 1.0; // Full opacity to avoid the glass effect over darkening the image
-    
-          vec4 blurredColor = texture2D(textureB, vUv + distortion * 0.005); // Slight offset for blurring
-    
-          gl_FragColor = mix(color, blurredColor, 0.5); // Mix both textures for a glass-like effect
+          color.rgb = mix(color.rgb, vec3(1.0), 0.1);
+          color.a = 1.0;
+          vec4 blurredColor = texture2D(textureB, vUv + distortion * 0.005);
+          gl_FragColor = mix(color, blurredColor, 0.5);
         }
       `,
       transparent: true,
       blending: THREE.NormalBlending,
-      depthWrite: false,
+      depthWrite: false
     });
-    
 
     const renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
@@ -198,25 +180,26 @@ export default function WaveEffectDemo() {
 
   return (
     <div className="relative min-h-screen overflow-hidden">
-      {/* WebGL Container */}
+      {/* WebGL Canvas */}
       <div
         ref={containerRef}
-        className="absolute inset-0 w-full h-full "
+        className="absolute inset-0 w-full h-full"
         style={{ touchAction: 'none' }}
       />
 
-      {/* Navigation */}
-<Navbar/>
+      {/* Navbar */}
+      <Navbar />
 
       {/* Center Content */}
       <div 
-        className="absolute inset-0 flex flex-col items-center justify-center z-10 pointer-events-none text-"
-        style={{ fontFamily: 'agr' }}
+        className="absolute inset-0 flex flex-col items-center justify-center z-10 pointer-events-none text-white"
       >
         <div className="flex">Shamil Shiraz</div>
-        <p className=" text-4xl sm:text-8xl font-bold flex">PORTFOLIO<ArrowUpRight size={48}/></p>
-
+        <p className="text-4xl sm:text-8xl font-bold flex">
+          PORTFOLIO <ArrowUpRight size={48} />
+        </p>
       </div>
     </div>
   );
 }
+
