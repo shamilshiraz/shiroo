@@ -55,7 +55,7 @@ const ContactSection = () => {
             
             <div className="flex space-x-6 items-center">
               <a 
-                href="https://www.linkedin.com/in/shamil-mm/" 
+                href="https://www.linkedin.com/in/shamilshiraz" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="hover:text-blue-500 transition-colors"
@@ -63,13 +63,13 @@ const ContactSection = () => {
                 <Linkedin size={40} />
               </a>
               <a 
-                href="mailto:shamilmm.dev@gmail.com"
+                href="mailto:shamilshiraz0@gmail.com"
                 className="hover:text-green-500 transition-colors"
               >
                 <Mail size={40} />
               </a>
               <a 
-                href="https://github.com/shamil-mm" 
+                href="https://github.com/shamilshiraz" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="hover:text-purple-500 transition-colors"

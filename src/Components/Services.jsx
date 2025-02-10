@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { MoveHorizontal } from "lucide-react";
+import { ArrowBigDown, ArrowUpRight, MoveHorizontal } from "lucide-react";
 import React from "react";
 
 function Services() {
@@ -24,7 +24,7 @@ function Services() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
         >
-          <MoveHorizontal className="w-[1.2em] h-[1.2em]" strokeWidth={0.5} />
+          <ArrowUpRight className="w-[1.2em] h-[1.2em]" strokeWidth={0.5} />
           Services
         </motion.p>
       </div>
