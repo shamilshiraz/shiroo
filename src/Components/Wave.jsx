@@ -201,7 +201,7 @@ export default function WaveEffectDemo() {
       {/* WebGL Container */}
       <div
         ref={containerRef}
-        className="absolute inset-0 w-full h-full pointer-events-none"
+        className="absolute inset-0 w-full h-full "
         style={{ touchAction: 'none' }}
       />
 

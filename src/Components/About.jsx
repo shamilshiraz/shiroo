@@ -8,7 +8,7 @@ function About() {
       className="min-h-screen w-full bg-black text-white flex justify-center items-center"
       style={{ fontFamily: "agr" }}
     >
-      <div className="w-[85%] mx-auto">
+      <div className="w-[85%] sm:mx-auto">
         <MaskText />
       </div>
     </div>

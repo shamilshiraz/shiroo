@@ -41,8 +41,8 @@ const BurgerButton = ({ isOpen, setIsOpen }) => {
       className="fixed right-5 top-5 w-20 h-20 rounded-full  bg-opacity-10 flex items-center justify-center z-50 md:hidden"
     >
       <div className="w-10 h-6 relative flex flex-col justify-center items-center">
-        <span className={`w-8 h-[2px] bg-white absolute transition-all duration-300 ${isOpen ? 'rotate-45' : '-translate-y-2'}`}></span>
-        <span className={`w-8 h-[2px] bg-white absolute transition-all duration-300 ${isOpen ? '-rotate-45' : 'translate-y-2'}`}></span>
+        <span className={`w-8 h-[4px] bg-white absolute transition-all duration-300 ${isOpen ? 'rotate-45' : '-translate-y-2'}`}></span>
+        <span className={`w-8 h-[4px] bg-white absolute transition-all duration-300 ${isOpen ? '-rotate-45' : 'translate-y-2'}`}></span>
       </div>
     </button>
   );
