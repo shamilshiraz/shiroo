@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: 'agr';
+    src: url('./fonts/agr/Agrandir-GrandLight.otf');
+}
+

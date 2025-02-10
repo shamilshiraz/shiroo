@@ -1,0 +1,10 @@
+body{
+    width: 100vw;
+    overflow-x: hidden;
+    background-color: black;
+    font-family: 'agr';
+    color: white;
+}
+body::-webkit-scrollbar{
+    display: none;
+    }
