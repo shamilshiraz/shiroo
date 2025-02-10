@@ -206,7 +206,7 @@ export default function WaveEffectDemo() {
       />
 
       {/* Navigation */}
-
+<Navbar/>
 
       {/* Center Content */}
       <div 
