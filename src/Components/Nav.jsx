@@ -55,7 +55,7 @@ const Navbar = () => {
   return (
     <>
       <nav className="top-0 left-0 w-full z-40 fixed">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className=" mx-10 px-4 sm:px-6 ">
           <div className="flex items-center justify-between h-32">
             {/* Japanese Logo */}
             <div className="text-5xl text-white">
@@ -63,18 +63,19 @@ const Navbar = () => {
             </div>
             
             {/* Desktop Navigation */}
-            <div className="hidden md:flex space-x-4">
-              {navItems.map((item) => (
-                <MagneticButton key={item}>
-                  <a 
-                    href={`#${item.toLowerCase()}`} 
-                    className="text-white hover:text-gray-300 px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    {item}
-                  </a>
-                </MagneticButton>
-              ))}
-            </div>
+<div className="hidden md:flex space-x-4 mix-blend-difference">
+  {navItems.map((item) => (
+    <MagneticButton key={item}>
+      <a 
+        href={`#${item.toLowerCase()}`} 
+        className="text-white hover:text-gray-300 px-3 py-2 rounded-md text-sm font-medium"
+      >
+        {item}
+      </a>
+    </MagneticButton>
+  ))}
+</div>
+
           </div>
         </div>
 
