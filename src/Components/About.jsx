@@ -4,6 +4,7 @@ import React, { useRef, useState, useEffect } from "react";
 function About() {
   return (
     <div
+    id="about"
       className="min-h-screen w-full bg-black text-white flex justify-center items-center"
       style={{ fontFamily: "agr" }}
     >

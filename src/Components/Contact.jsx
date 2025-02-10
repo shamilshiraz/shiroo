@@ -4,16 +4,15 @@ import { Linkedin, Mail, Github } from 'lucide-react';
 
 const ContactSection = () => {
   const textArray = [
-    "UI/UX DESIGN", 
-    "WEB DEVELOPMENT", 
-    "SEO", 
-    "BRANDING"
+    "CONNECT", 
+    "CREATE", 
+    "COLLABORATE", 
   ];
 
   const duplicatedArray = [...textArray, ...textArray];
 
   return (
-    <div className="bg-white text-black">
+    <div id='contact' className="bg-white text-black">
       <div className="overflow-hidden whitespace-nowrap">
         <motion.div 
           className="inline-flex py-5"

@@ -4,7 +4,9 @@ import { MoveDiagonal } from 'lucide-react';
 
 export const Example = () => {
   return (
-    <div className="">
+    <div 
+    id="projects"
+    className="">
       <HorizontalScrollCarousel />
     </div>
   );
@@ -89,8 +91,8 @@ const cards = [
     id: 6,
   },
   {
-    url: "/eup.png",
-    title: "Euphoric coders",
+    url: "/zaitoon.png",
+    title: "Zaitoon",
     id: 7,
   },
 ];

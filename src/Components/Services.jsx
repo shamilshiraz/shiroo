@@ -15,7 +15,7 @@ function Services() {
   const services = ["Web development", "Web design", "Web animations"];
 
   return (
-    <div className="h-[100vh] flex flex-col justify-center px-10">
+    <div id="services" className="h-[100vh] flex flex-col justify-center px-10">
       {/* Heading */}
       <div className="w-full flex justify-end">
         <motion.p

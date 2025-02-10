@@ -7,6 +7,8 @@ import Example from './Components/Horizontail';
 import Section from './Components/Section';
 import Services from './Components/Services';
 import InfiniteTextScroll from './Components/Contact';
+import CircleReveal from './Components/Circle';
+import Navbar from './Components/Nav';
 
 function App() {
   useEffect(() => {
@@ -31,7 +33,11 @@ function App() {
 
   return (
     <div>
-      <WaveEffectDemo />
+<nav className="absolute top-0 left-0 right-0 z-[100] w-full">
+  <Navbar />
+</nav>
+
+      <CircleReveal/>
       <About />
       <Section />
       <Example />

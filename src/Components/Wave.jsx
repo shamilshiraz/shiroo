@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
-import TiltCard from './Tiltcard';
 import { ArrowUpRight } from 'lucide-react';
+import Navbar from './Nav';
 
 export default function WaveEffectDemo() {
   const containerRef = useRef(null);
@@ -206,32 +206,15 @@ export default function WaveEffectDemo() {
       />
 
       {/* Navigation */}
-      <nav className="absolute top-0 left-0 right-0 z-20 w-full text-\">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center">
-              <span className="  text-4xl">
-                白
-              </span>
-            </div>
-            <div className="hidden md:block">
-              <div className="flex items-baseline space-x-4">
-                <a href="#" className="hover:text-white px-3 py-2 rounded-md text-sm font-medium">Home</a>
-                <a href="#" className="hover:text-white px-3 py-2 rounded-md text-sm font-medium">About</a>
-                <a href="#" className="hover:text-white px-3 py-2 rounded-md text-sm font-medium">Contact</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </nav>
+
 
       {/* Center Content */}
       <div 
         className="absolute inset-0 flex flex-col items-center justify-center z-10 pointer-events-none text-"
         style={{ fontFamily: 'agr' }}
       >
-        <div className="flex">Shamil Shiraz<ArrowUpRight/></div>
-        <p className=" text-4xl sm:text-8xl font-bold">PORTFOLIO </p>
+        <div className="flex">Shamil Shiraz</div>
+        <p className=" text-4xl sm:text-8xl font-bold flex">PORTFOLIO<ArrowUpRight size={48}/></p>
 
       </div>
     </div>
