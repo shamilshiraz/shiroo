@@ -16,29 +16,26 @@ function App() {
       duration: 1.5,
       easing: (t) => 1 - Math.pow(1 - t, 3),
       smoothWheel: true,
-      smoothTouch: true,  // ✅ Enable touch scroll on mobile
-      touchMultiplier: 2, // ✅ Adjust scroll speed for touch devices
+      smoothTouch: true,
     });
-  
+
     function raf(time) {
       lenis.raf(time);
       requestAnimationFrame(raf);
     }
-  
+
     requestAnimationFrame(raf);
-  
+
     return () => {
       lenis.destroy();
     };
   }, []);
-  
 
   return (
     <div>
-<nav className="absolute top-0 left-0 right-0 z-[100] w-full pointer-events-none">
-  <Navbar />
-</nav>
-
+            <nav className="absolute top-0 left-0 right-0 z-100 w-full text-\">
+<Navbar/>
+      </nav>
       <CircleReveal/>
       <About />
       <Section />
