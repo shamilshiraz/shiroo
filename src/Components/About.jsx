@@ -24,7 +24,7 @@ function MaskText() {
   const [lines, setLines] = useState([]);
   const isInView = useInView(ref, { once: false, margin: "0% 0% -25% 0%" });
 
-  const text = "Hello, I'm Shamil, I design and build websites, I found my passion in web design recently so here we are, welcome to my portfolio";
+  const text = "Hello, I'm Shamil,  I am a front end developer with a full stack expertise, I love building visually stunning creative websites.";
 
   useEffect(() => {
     const calculateOptimalFontSize = () => {
@@ -34,7 +34,7 @@ function MaskText() {
       const containerHeight = window.innerHeight * 0.7; // Use 70% of viewport height
       
       // Start with a large font size and decrease until text fits
-      let testSize = Math.min(containerWidth / 8, containerHeight / 6)-10;
+      let testSize = Math.min(containerWidth / 8, containerHeight / 6)-15;
       setFontSize(testSize);
     };
 
