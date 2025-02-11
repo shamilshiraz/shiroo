@@ -91,8 +91,8 @@ const cards = [
     id: 6,
   },
   {
-    url: "/zaitoon.png",
-    title: "Zaitoon",
+    url: "/vemr.png",
+    title: "Vision emarat",
     id: 7,
   },
 ];

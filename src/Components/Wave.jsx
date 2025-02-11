@@ -179,27 +179,31 @@ export default function WaveEffectDemo() {
   }, []);
 
   return (
-    <div className="relative min-h-screen overflow-hidden">
-      {/* WebGL Canvas */}
-      <div
-        ref={containerRef}
-        className="absolute inset-0 w-full h-full"
-        style={{ touchAction: 'none' }}
-      />
+<div 
+  className="relative h-screen w-screen overflow-hidden" 
+  style={{ backgroundImage: "url('/sand.jpg')", backgroundSize: "cover", backgroundPosition: "center" }}
+>
+  {/* WebGL Canvas - Hidden on small and medium screens */}
+  <div
+    ref={containerRef}
+    className="absolute inset-0 w-full h-full hidden sm:block"
+    style={{ touchAction: "none" }}
+  />
 
-      {/* Navbar */}
-      <Navbar />
+  {/* Navbar */}
+  <Navbar />
 
-      {/* Center Content */}
-      <div 
-        className="absolute inset-0 flex flex-col items-center justify-center z-10 pointer-events-none text-white"
-      >
-        <div className="flex">Shamil Shiraz</div>
-        <p className="text-4xl sm:text-8xl font-bold flex">
-          PORTFOLIO <ArrowUpRight size={48} />
-        </p>
-      </div>
-    </div>
+  {/* Center Content */}
+  <div 
+    className="absolute inset-0 flex flex-col items-center justify-center z-10 pointer-events-none text-white"
+  >
+    <div className="flex">Shamil Shiraz</div>
+    <p className="text-4xl sm:text-8xl font-bold flex">
+      PORTFOLIO <ArrowUpRight size={48} />
+    </p>
+  </div>
+</div>
+
   );
 }
 
