@@ -181,7 +181,7 @@ export default function WaveEffectDemo() {
   return (
 <div 
   className="relative h-screen w-screen overflow-hidden" 
-  style={{ backgroundImage: "url('/sand.jpg')", backgroundSize: "cover", backgroundPosition: "center" }}
+  style={{ backgroundImage: "url('/ds.jpg')", backgroundSize: "cover", backgroundPosition: "center" }}
 >
   {/* WebGL Canvas - Hidden on small and medium screens */}
   <div
