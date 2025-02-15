@@ -68,7 +68,7 @@ const Navbar = () => {
     <MagneticButton key={item}>
       <a 
         href={`#${item.toLowerCase()}`} 
-        className="text-white hover:text-gray-300 px-3 py-2 rounded-md text-sm font-medium"
+        className="text-white hover:text-gray-300 px-3  py-2 rounded-md text-sm font-medium "
       >
         {item}
       </a>

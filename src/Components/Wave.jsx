@@ -29,7 +29,7 @@ export default function WaveEffectDemo() {
 
     // Load the image as texture (sand.jpg)
     const textureLoader = new THREE.TextureLoader();
-    const backgroundTexture = textureLoader.load('/sand.jpg');
+    const backgroundTexture = textureLoader.load('/ds.jpg');
     backgroundTexture.minFilter = THREE.LinearFilter;
     backgroundTexture.magFilter = THREE.LinearFilter;
     backgroundTexture.generateMipmaps = false;
