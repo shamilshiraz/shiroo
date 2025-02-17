@@ -1,167 +1,90 @@
-import { motion, useInView } from "framer-motion";
-import React, { useRef, useState, useEffect } from "react";
+import React from 'react';
+import { motion, useInView } from 'framer-motion';
+import { useRef } from 'react';
 
-function About() {
-  return (
-    <div
-    id="about"
-      className="min-h-screen w-full bg-black text-white flex justify-center items-center"
-      style={{ fontFamily: "agr" }}
-    >
-      <div className="w-[85%] sm:mx-auto">
-        <MaskText />
-      </div>
-    </div>
-  );
-}
-
-export default About;
-
-function MaskText() {
+const StaggeringBlurText = ({ text = "Hello, I'm Shamil, I'm a front-end developer with a full stack expertise, I build visually stunning and Interactive websites" }) => {
   const ref = useRef(null);
-  const containerRef = useRef(null);
-  const [fontSize, setFontSize] = useState(32);
-  const [lines, setLines] = useState([]);
-  const isInView = useInView(ref, { once: false, margin: "0% 0% -25% 0%" });
-
-  const text = "Hello, I'm Shamil,  I am a front end developer with a full stack expertise, I love building visually stunning creative websites.";
-
-  useEffect(() => {
-    const calculateOptimalFontSize = () => {
-      if (!containerRef.current) return;
-      
-      const containerWidth = containerRef.current.offsetWidth;
-      const containerHeight = window.innerHeight * 0.7; // Use 70% of viewport height
-      
-      // Start with a large font size and decrease until text fits
-      let testSize = Math.min(containerWidth / 8, containerHeight / 6)-15;
-      setFontSize(testSize);
-    };
-
-    const detectLines = () => {
-      if (!containerRef.current) return;
-
-      const span = document.createElement('span');
-      span.style.visibility = 'hidden';
-      span.style.position = 'absolute';
-      span.style.fontSize = `${fontSize}px`;
-      span.style.fontFamily = 'agr';
-      span.style.fontWeight = 'light';
-      span.style.whiteSpace = 'nowrap';
-      document.body.appendChild(span);
-
-      const containerWidth = containerRef.current.offsetWidth;
-      const words = text.split(' ');
-      const newLines = [];
-      let currentLine = [];
-
-      words.forEach(word => {
-        const testLine = [...currentLine, word].join(' ');
-        span.textContent = testLine;
-
-        if (span.offsetWidth > containerWidth && currentLine.length > 0) {
-          newLines.push(currentLine.join(' '));
-          currentLine = [word];
-        } else {
-          currentLine.push(word);
-        }
-      });
-
-      if (currentLine.length > 0) {
-        newLines.push(currentLine.join(' '));
+  const isInView = useInView(ref, { 
+    amount: 0.3,
+    once: true
+  });
+  
+  // Split text into lines and words
+  const lines = [
+    "Hello, I'm Shamil,",
+    "I'm a front-end developer",
+    "with a full stack expertise,",
+    "I build visually stunning",
+    "and Interactive websites"
+  ];
+  
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.12,
+        delayChildren: 0.2
       }
-
-      document.body.removeChild(span);
-      setLines(newLines);
-    };
-
-    calculateOptimalFontSize();
-    const resizeHandler = () => {
-      calculateOptimalFontSize();
-    };
-
-    window.addEventListener('resize', resizeHandler);
-    return () => window.removeEventListener('resize', resizeHandler);
-  }, []);
-
-  useEffect(() => {
-    if (fontSize > 0) {
-      const detectLines = () => {
-        if (!containerRef.current) return;
-
-        const span = document.createElement('span');
-        span.style.visibility = 'hidden';
-        span.style.position = 'absolute';
-        span.style.fontSize = `${fontSize}px`;
-        span.style.fontFamily = 'agr';
-        span.style.fontWeight = 'bold';
-        span.style.whiteSpace = 'nowrap';
-        document.body.appendChild(span);
-
-        const containerWidth = containerRef.current.offsetWidth;
-        const words = text.split(' ');
-        const newLines = [];
-        let currentLine = [];
-
-        words.forEach(word => {
-          const testLine = [...currentLine, word].join(' ');
-          span.textContent = testLine;
-
-          if (span.offsetWidth > containerWidth && currentLine.length > 0) {
-            newLines.push(currentLine.join(' '));
-            currentLine = [word];
-          } else {
-            currentLine.push(word);
-          }
-        });
-
-        if (currentLine.length > 0) {
-          newLines.push(currentLine.join(' '));
-        }
-
-        document.body.removeChild(span);
-        setLines(newLines);
-      };
-
-      detectLines();
     }
-  }, [fontSize, text]);
-
-  const animation = {
-    initial: { y: "100%" },
-    enter: (i) => ({
-      y: "0",
-      transition: { duration: 0.75, ease: [0.33, 1, 0.68, 1], delay: 0.075 * i },
-    }),
-    exit: { y: "100%", transition: { duration: 0.5 } },
+  };
+  
+  const lineVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.04
+      }
+    }
+  };
+  
+  const wordVariants = {
+    hidden: { 
+      opacity: 0,
+      filter: "blur(20px)",
+      y: 20
+    },
+    visible: {
+      opacity: 1,
+      filter: "blur(0px)",
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut"
+      }
+    }
   };
 
   return (
-    <div className="p-10 ">
-    <div 
-      ref={containerRef}
-      className="w-full py-10"
-    >
-      <div ref={ref} className="flex flex-col">
-        {lines.map((line, i) => (
-          <div key={i} className="overflow-hidden my-2">
-            <motion.p
-              custom={i}
-              variants={animation}
-              initial="initial"
-              animate={isInView ? "enter" : "exit"}
-              className="whitespace-nowrap"
-              style={{
-                fontSize: `${fontSize}px`,
-                lineHeight: 1.1,
-                fontWeight: 'bold'
-              }}
-            >
-              {line}
-            </motion.p>
-          </div>
+    <div className="h-screen w-screen flex items-center justify-center ">
+      <motion.div
+        ref={ref}
+        variants={containerVariants}
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"}
+        className="flex flex-col items-center justify-center max-w-4xl px-6"
+      >
+        {lines.map((line, lineIndex) => (
+          <motion.div
+            key={lineIndex}
+            variants={lineVariants}
+            className="overflow- flex flex-wrap justify-center mb-4"
+          >
+            {line.split(" ").map((word, wordIndex) => (
+              <motion.span
+                key={`${lineIndex}-${wordIndex}`}
+                variants={wordVariants}
+                className="text-4xl md:text-6xl font-bold text-white mx-2"
+              >
+                {word}
+              </motion.span>
+            ))}
+          </motion.div>
         ))}
-      </div>
-    </div></div>
+      </motion.div>
+    </div>
   );
-}
+};
+
+export default StaggeringBlurText;
